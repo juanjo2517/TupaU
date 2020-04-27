@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+  Inicio de Sesión | TupaU
+{% endblock title %}
+
+{% block formulario %}
+  
+<form action="" method="post" class="mt-4 ">
+    <h1 class="inicia-sesion text-center">
+        Inicia sesión, TupaU.
+    </h1>
+    <h6 class="slogan mt-4">
+        Bienvenidos a TupaU, vive tu mejor experiencia y haz más amigos.
+    </h6>
+    <label for="" class="label-login">Correo:</label>
+    <input type="email" class="input-form" required>
+
+    <label for="" class="label-login mt-3">Contraseña:</label>
+    <input type="password" class="input-form" required>
+
+    <h6 class="mt-3 olvidaste-pass"><a href="#">¿Olvidaste tu cuenta?</a></h6>
+    <h6 class="mt-3 olvidaste-pass">¿No tienes cuenta?
+        <a href="{% url 'usuario:registro' %}"> <span class="terminos toggle">¡Regístrate!</span>
+        </a>
+    </h6>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-3 col-3">
+                <button type="sumbit" class="mt-3 btn-ingresar toggle">Ingresar</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+{% endblock formulario %}
+                

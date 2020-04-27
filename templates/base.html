@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="apple-touch-icon" sizes="76x76" href="Forms/assets/img/fav.png">
+    <link rel="icon" type="image/png" href="{% static 'img/fav.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+    <!--HEADER-->
+    <div class="header">
+        <div class="header-logo">
+            <div class="container container-header">
+                <img src="{% static 'img/logo.png' %}" alt="logo TUPAU" class="img-responsive">
+            </div>
+        </div>
+    </div>
+    <!--FIN HEADER-->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-7 col-sm-12 col-xs-12">
+                <img src="{% static 'img/imagen-login-2.jpg' %}" class="img-responsive posicion" width="100%">
+            </div>
+            <!---->
+
+            <div class="col-lg-5 col-sm-12 col-xs-12 login">
+
+            {% block formulario %}
+
+            {% endblock formulario %}
+                <div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
