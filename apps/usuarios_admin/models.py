@@ -37,17 +37,17 @@ class UsuarioManager(BaseUserManager):
         return usuario
 
 
+class TipoUsuario(models.Model):
+    id = models.AutoField(primary_key = True)
+    nombre = models.FileField('Tipo Usuario', max_length=100, blank=False, null=False)
+
 class Usuario(models.Model):
+    id = models.AutoField(primary_key = True)
     nombre = models.CharField('Nombre', max_length=150, blank=False, null=False)
     apellido = models.CharField('Apellido', max_length=150, blank=False, null=False)
     correo_electronico = models.EmailField('Correo Electrónico', max_length=254, unique=True, blank=False, null=False)
     username = models.CharField('Nombre de Usuario', max_length=50, unique=True, blank=False, null=False)
-    foto_perfil = models.ImageField('Foto de Perfil',upload_to='perfil/', 
-                                height_field=None,width_field=None, 
-                                max_length=200,blank=False, 
-                                null=False
-                                )
-    fecha_nacimiento = models.DateField('Fecha de Nacimiento', auto_now=True, auto_now_add=False)
+    tipo_usuario = models.ForeignKey(TipoUsuario, on_delete = models.CASCADE, default=None)
     activo = models.BooleanField(default=True)
     usuario_administrador = models.BooleanField(default=False)
     objects = UsuarioManager()
@@ -75,3 +75,15 @@ class Usuario(models.Model):
     def is_staff(self):
         #Verifica si el usuario es administrador o no
         return self.usuario_administrador
+
+class CuentaUsuario(models.Model):
+ 
+    fecha_nacimiento = models.DateField('Fecha de Nacimiento', auto_now=True, auto_now_add=False)
+    foto_perfil = models.ImageField('Foto de Perfil',upload_to='perfil/', 
+                                height_field=None,width_field=None, 
+                                max_length=200,blank=False, 
+                                null=False
+                                )
+    usuario_id = models.ForeignKey(Usuario, on_delete = models.CASCADE)
+    
+    
